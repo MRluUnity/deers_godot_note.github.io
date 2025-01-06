@@ -1,12 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+<script type="text/javascript" src="./deer.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deers Godot Note</title>
 </head>
 <body>
-    <p>Welcome to Deers Godot Note!</p>
-    <p>This is a test website for Godot Note.</p>
+    <div id="deer-app">
+        <div id="header-container">
+            <h1 d-text="title"></h1>
+            <button ed-click="goto_home()" class="round">
+                <svg t="1736177563862" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8496" width="20" height="20">
+                    <path d="M946.5 505L560.1 118.8l-25.9-25.9c-12.3-12.2-32.1-12.2-44.4 0L77.5 505c-12.3 12.3-18.9 28.6-18.8 46 0.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8 12.1-12.1 18.7-28.2 18.7-45.3 0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204z m217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z" p-id="8497">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div id="content-container">
+            <div id="slider_container">
+                <button ed-click="add_desc_in_desc_container('开始Godot')" class="full-width">开始Godot</button>
+                <button ed-click="add_desc_in_desc_container('Godot一')" class="full-width">Godot一</button>
+            </div>
+            <div id="desc_container">
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 动态添加 sayHello 方法到 deer.data
+        window.deer.data = {
+            title : "鹿的Godot笔记",
+            goto_home: function(){
+                window.location.href = "./index.html";
+            },
+            add_desc_in_desc_container: function(desc_name){
+                var desc_container = document.getElementById("desc_container");
+                desc_container.innerHTML = "";
+                var desc_div = document.createElement("div");
+                if (desc_name === "开始Godot") {
+                    desc_div.innerHTML = "<h1>开始Godot</h1>";
+                }
+                else if (desc_name === "Godot一") {
+                    desc_div.innerHTML = "<h1>Godot一</h1>";
+                }
+                desc_container.appendChild(desc_div);
+            },
+        };
+
+        // 初始化 deer
+        window.deer.init();
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+            background-color: #9e354a;
+        }
+        .round {
+            border-radius: 50%;
+        }
+        .full-width {
+            width: 100%;
+        }
+        #content-container {
+            width: 100%;
+            height: 95%;
+            display: flex;
+            position: fixed;
+            top: 5%;
+        }
+        #desc_container {
+            width: 100%;
+            overflow: auto;
+        }
+        #slider_container {
+            width: 200px;
+            color: #771428;
+            background-color: #771428;
+        }
+        #header-container {
+            width: 100%;
+            height: 5%;
+            justify-content: center;
+            align-items: center;
+            background-color: #c56376; 
+            display: flex;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+        button {
+            height: 30px;
+            width: 30px;
+            background-color: #f5a6b7;
+            border: none;
+        }
+        button:hover {
+            background-color: #ed9ead;
+        }
+    </style>
 </body>
 </html>
