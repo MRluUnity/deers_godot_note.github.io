@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<script type="text/javascript" src="./deer.js"></script>
+<script type="text/javascript" src="./js/deer.js"></script>
+<style type="text/css" src="./css/main.css"></style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +20,8 @@
         </div>
         <div id="content-container">
             <div id="slider_container">
-                <button ed-click="add_desc_in_desc_container('开始Godot')" class="full-width">开始Godot</button>
-                <button ed-click="add_desc_in_desc_container('Godot一')" class="full-width">Godot一</button>
+                <button ed-click="update_desc_in_desc_container('开始Godot')" class="full-width">开始Godot</button>
+                <button ed-click="update_desc_in_desc_container('Godot一')" class="full-width">Godot一</button>
             </div>
             <div id="desc_container">
                 
@@ -29,81 +30,8 @@
     </div>
 
     <script>
-        // 动态添加 sayHello 方法到 deer.data
-        window.deer.data = {
-            title : "鹿的Godot笔记",
-            goto_home: function(){
-                window.location.href = "./index.html";
-            },
-            add_desc_in_desc_container: function(desc_name){
-                var desc_container = document.getElementById("desc_container");
-                desc_container.innerHTML = "";
-                var desc_div = document.createElement("div");
-                if (desc_name === "开始Godot") {
-                    desc_div.innerHTML = "<h1>开始Godot</h1>";
-                }
-                else if (desc_name === "Godot一") {
-                    desc_div.innerHTML = "<h1>Godot一</h1>";
-                }
-                desc_container.appendChild(desc_div);
-            },
-        };
-
         // 初始化 deer
         window.deer.init();
     </script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            line-height: 1.5;
-            color: #333;
-            background-color: #9e354a;
-        }
-        .round {
-            border-radius: 50%;
-        }
-        .full-width {
-            width: 100%;
-        }
-        #content-container {
-            width: 100%;
-            height: 95%;
-            display: flex;
-            position: fixed;
-            top: 5%;
-        }
-        #desc_container {
-            width: 100%;
-            overflow: auto;
-        }
-        #slider_container {
-            width: 200px;
-            color: #771428;
-            background-color: #771428;
-        }
-        #header-container {
-            width: 100%;
-            height: 5%;
-            justify-content: center;
-            align-items: center;
-            background-color: #c56376; 
-            display: flex;
-            position: fixed;
-            top: 0;
-            z-index: 100;
-        }
-        button {
-            height: 30px;
-            width: 30px;
-            background-color: #f5a6b7;
-            border: none;
-        }
-        button:hover {
-            background-color: #ed9ead;
-        }
-    </style>
 </body>
 </html>

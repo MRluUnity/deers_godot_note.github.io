@@ -1,6 +1,27 @@
 window.deer = {
     el: "#deer-app",
     data: {
+        title : "鹿的Godot笔记",
+            goto_home: function(){
+                window.location.href = "./index.html";
+            },
+            update_desc_in_desc_container: function(desc_name){
+                this.title = desc_name;
+                var desc_container = document.getElementById("desc_container");
+                desc_container.innerHTML = "";
+                var desc_div = document.createElement("div");
+                fetch('./desc/' + desc_name +'.html')
+                .then(response => {
+                    return response.text();
+                })
+                .then(text => {
+                    desc_div.innerHTML = text;
+                })
+                .catch(error => {
+                    console.error('获取文件失败：', error);
+                });
+                desc_container.appendChild(desc_div);
+            },
     },
     directives : {
         "d-text": (el, value) => {
@@ -51,7 +72,7 @@ window.deer = {
                 }
             })
         })
-    },    
+    },
     walkDom(el, callback) {
         callback(el);
 
